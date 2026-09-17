@@ -1,0 +1,418 @@
+/* Nestlong MVP - Sistema de Estilos Global */
+
+:root {
+  --color-slate-900: #0F172A;
+  --color-slate-dark: #1E293B;
+  --color-slate-muted: #475569;
+  --color-slate-subtle: #64748B;
+  --color-slate-border: #E2E8F0;
+  --color-slate-bg: #F8FAFC;
+  --color-sky-primary: #0369A1;
+  --color-sky-accent: #0EA5E9;
+  --color-sky-hover: #0284C7;
+  --color-emerald-price: #047857;
+  --color-emerald-surface: #10B981;
+  --color-emerald-subtle: #D1E7DD;
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-slate-bg);
+  color: var(--color-slate-dark);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Numeros tabulares */
+.price-tabular, .font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* WCAG AAA Contrast Overrides for Bootstrap (WAVE & Lighthouse 100) */
+.text-secondary {
+  color: #475569 !important; /* WCAG AAA 7.58:1 on white/slate-50 */
+}
+.text-muted {
+  color: #475569 !important;
+}
+
+/* Transiciones suaves */
+.transition-smooth {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Imagenes de tarjeta */
+.property-card-img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Elevacion de tarjeta */
+.card-elevation {
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+}
+.card-elevation:hover {
+  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12);
+}
+
+/* SVG inline */
+.svg-icon {
+  display: inline-block;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+}
+
+/* === Scroll Animations === */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-on-scroll.is-visible,
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays escalonados */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* === Hero Slideshow === */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  z-index: 1;
+}
+.hero-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+.hero-dot,
+.hero-dot-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+.hero-dot::after,
+.hero-dot-btn::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+.hero-dot.active::after,
+.hero-dot-btn.active::after,
+.hero-dot-btn.opacity-100::after {
+  background-color: #ffffff;
+  width: 26px;
+  opacity: 1;
+}
+.hero-dot-btn.opacity-50::after {
+  opacity: 0.5;
+}
+
+/* === Neighborhood Cards === */
+.neighborhood-card {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  position: relative;
+}
+.neighborhood-card img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.neighborhood-card:hover img {
+  transform: scale(1.08);
+}
+
+/* === Testimonials === */
+.testimonial-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  object-fit: cover;
+  border: 3px solid var(--color-slate-border);
+}
+.star-filled {
+  color: #F59E0B;
+  fill: #F59E0B;
+  stroke: #F59E0B;
+}
+.star-empty {
+  color: #E2E8F0;
+  fill: #E2E8F0;
+  stroke: #E2E8F0;
+}
+
+/* === Back to Top === */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background-color: var(--color-sky-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(3, 105, 161, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background-color: var(--color-sky-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(3, 105, 161, 0.4);
+}
+
+/* === Counter Pulse === */
+@keyframes countPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.counter-animated {
+  animation: countPulse 0.3s ease-out;
+}
+
+/* === Gradient Text === */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #0EA5E9, #10B981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === Glass Card === */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* === CTA Banner === */
+.cta-banner-bg {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0369A1 100%);
+}
+
+/* === Line Clamp === */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* === FAQ Accordion Refinement === */
+.accordion-button:not(.collapsed) {
+  background-color: rgba(3, 105, 161, 0.06);
+  color: var(--color-sky-primary);
+  box-shadow: none;
+}
+.accordion-button:focus {
+  box-shadow: 0 0 0 2px rgba(3, 105, 161, 0.2);
+}
+
+/* === Header Adaptativo al Scroll === */
+#main-header {
+  transition: padding 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#main-header.header-scrolled {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* Indicador de seccion activa en Navbar */
+.nav-link.nav-active {
+  color: var(--color-sky-primary) !important;
+  font-weight: 700 !important;
+}
+
+/* === Boton de Favoritos en Tarjeta === */
+.btn-favorite {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748B;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.btn-favorite:hover {
+  transform: scale(1.1);
+  color: #E11D48;
+  background: #ffffff;
+}
+.btn-favorite.active {
+  color: #E11D48;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(225, 29, 72, 0.25);
+}
+.btn-favorite.active svg {
+  fill: #E11D48;
+  stroke: #E11D48;
+}
+
+/* === Boton Copiar Enlace === */
+.btn-copy-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748B;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  padding: 0;
+}
+.btn-copy-link:hover {
+  transform: scale(1.1);
+  color: var(--color-sky-primary);
+  background: #ffffff;
+}
+
+/* === Pills de Filtros Activos === */
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: #E0F2FE;
+  color: #0369A1;
+  border: 1px solid #BAE6FD;
+  transition: all 0.2s ease;
+}
+.filter-pill button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.filter-pill button:hover {
+  color: #0F172A;
+}
+
+/* === Toast Flotante de Notificaciones === */
+.nestlong-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  opacity: 0;
+  background-color: #0F172A;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  font-size: 0.88rem;
+  font-weight: 500;
+  z-index: 1050;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+.nestlong-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* === Controles de Slideshow Hero === */
+.hero-control-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.2s ease;
+}
+.hero-control-btn:hover {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.08);
+}
+.hero-control-prev { left: 1.25rem; }
+.hero-control-next { right: 1.25rem; }
+
+/* === Focus Visible Accesible === */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-sky-primary) !important;
+  outline-offset: 2px !important;
+}
+
