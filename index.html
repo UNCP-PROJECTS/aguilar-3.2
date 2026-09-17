@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nestlong | Alquiler Residencial de Largo Plazo</title>
+  <meta name="description" content="Nestlong: Plataforma lider de alquiler residencial de larga estancia. Estabilidad, contratos anuales blindados y fianza protegida sin comisiones ocultas.">
+  <meta name="keywords" content="alquiler larga estancia, pisos alquiler residencial, contratos anuales, fianza protegida, nestlong, vivienda estable">
+  <meta name="author" content="Jose Osorio Mallqui, Arlette Suarez Roman">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1E293B">
+
+  <link rel="canonical" href="./index.html">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230369A1'%3E%3Cpath d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' stroke='%230369A1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nestlong | Tu proximo hogar, sin fecha de salida">
+  <meta property="og:description" content="Alquiler residencial para estancias superiores a 1 ano con fianza certificada y cero comisiones abusivas.">
+  <meta property="og:image" content="https://picsum.photos/seed/nestlong-hero-1/1200/630">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+    crossorigin="anonymous"
+  >
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false,
+      },
+      theme: {
+        extend: {
+          colors: {
+            slateDark: '#1E293B',
+            skyPrimary: '#0369A1',
+            skyAccent: '#0EA5E9',
+            skyHover: '#0284C7',
+            emeraldPrice: '#047857',
+            emeraldSurface: '#10B981',
+            slateBg: '#F8FAFC'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/global.css">
+
+  <style>
+    /* Hero-specific layout (complements global.css) */
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6)); z-index: 2; }
+    .hero-content { position: relative; z-index: 10; }
+    .neighborhood-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .neighborhood-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); }
+    .hover-scale { transition: transform 0.3s ease; }
+    .hover-scale:hover { transform: scale(1.03); }
+    .cta-overlay { position: absolute; inset: 0; background-color: rgba(15, 23, 42, 0.85); }
+  </style>
+<body class="bg-slateBg position-relative">
+
+  <!-- Enlace accesible de salto al contenido -->
+  <a href="#main-content" class="visually-hidden-focusable btn btn-primary position-absolute top-0 start-0 m-3 z-50 rounded-pill px-3 py-1.5 text-xs text-white" style="background-color: #0369A1;">
+    Saltar al contenido principal
+  </a>
+
+  <header id="main-header" class="sticky-top shadow-sm py-3 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <nav class="navbar navbar-expand-lg p-0" aria-label="Navegacion principal">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+          <span class="d-inline-flex align-items-center justify-content-center text-white rounded-3 p-2 shadow-sm" style="width: 40px; height: 40px; background-color: #0369A1;">
+            <svg class="svg-icon" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </span>
+          <div class="lh-sm">
+            <span class="fw-bold fs-4 tracking-tight text-slate-800">Nest<span style="color: #0369A1;">long</span></span>
+            <small class="d-block text-secondary text-xs" style="font-size: 0.68rem; letter-spacing: 0.08em; font-weight: 600;">ALQUILER DE LARGO PLAZO</small>
+          </div>
+        </a>
+
+        <button 
+          class="navbar-toggler border-0 shadow-none p-2" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNestlongContent" 
+          aria-controls="navbarNestlongContent" 
+          aria-expanded="false" 
+          aria-label="Abrir menu de navegacion"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNestlongContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link fw-semibold active" aria-current="page" href="#catalogo" style="color: #0369A1;">Catalogo</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a 
+                class="nav-link dropdown-toggle fw-semibold text-secondary" 
+                href="#" 
+                id="ciudadesDropdown" 
+                role="button" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false"
+              >
+                Ciudades
+              </a>
+              <ul class="dropdown-menu shadow-lg border-0 rounded-3 mt-2" aria-labelledby="ciudadesDropdown">
+                <li><a class="dropdown-item py-2 city-nav-link" href="#catalogo" data-city="Madrid">Madrid <span class="badge rounded-pill text-bg-light float-end">Ref. 1</span></a></li>
+                <li><a class="dropdown-item py-2 city-nav-link" href="#catalogo" data-city="Barcelona">Barcelona <span class="badge rounded-pill text-bg-light float-end">Ref. 2</span></a></li>
+                <li><a class="dropdown-item py-2 city-nav-link" href="#catalogo" data-city="Valencia">Valencia <span class="badge rounded-pill text-bg-light float-end">Ref. 3</span></a></li>
+                <li><a class="dropdown-item py-2 city-nav-link" href="#catalogo" data-city="Sevilla">Sevilla <span class="badge rounded-pill text-bg-light float-end">Ref. 4</span></a></li>
+                <li><a class="dropdown-item py-2 city-nav-link" href="#catalogo" data-city="Malaga">Málaga <span class="badge rounded-pill text-bg-light float-end">Ref. 5</span></a></li>
+                <li><a class="dropdown-item py-2 city-nav-link" href="#catalogo" data-city="Bilbao">Bilbao <span class="badge rounded-pill text-bg-light float-end">Ref. 6</span></a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item py-2 text-primary city-nav-link" href="#catalogo" data-city="all">Ver todas las ciudades</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary d-flex align-items-center gap-1" href="#beneficios">
+                Garantias 
+                <span class="badge rounded-pill" style="background-color: #047857; font-size: 0.68rem; font-weight: 700;">LAU 100%</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary" href="#barrios">Zonas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary" href="#faq">FAQ</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-semibold text-secondary" href="contacto.html">Contacto</a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-2 pt-3 pt-lg-0 border-top border-lg-0 border-slate-100">
+            <a href="#aplicar" class="btn btn-outline-secondary rounded-pill px-3 py-2 text-xs fw-semibold">
+              Propietarios
+            </a>
+            <a href="#aplicar" class="btn btn-primary rounded-pill px-4 py-2 text-white fw-semibold shadow-sm" style="background-color: #0369A1; border-color: #0369A1;">
+              Postular a Renta
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+ 
+  <main id="main-content">
+ 
+   <!-- Hero Section con Slideshow -->
+  <section class="position-relative overflow-hidden" style="min-height: 80vh; display: flex; align-items: center;">
+    <div class="hero-slide active" style="background-image: url('https://picsum.photos/seed/nestlong-hero-1/1920/1080');"></div>
+    <div class="hero-slide" style="background-image: url('https://picsum.photos/seed/nestlong-hero-2/1920/1080');"></div>
+    <div class="hero-slide" style="background-image: url('https://picsum.photos/seed/nestlong-hero-3/1920/1080');"></div>
+    <div class="hero-slide" style="background-image: url('https://picsum.photos/seed/nestlong-hero-4/1920/1080');"></div>
+    <div class="hero-overlay"></div>
+    
+    <div class="container hero-content py-5">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill bg-white/10 text-sky-300 backdrop-blur-sm border border-white/15 mb-3 text-xs fw-semibold">
+            <span class="d-inline-block rounded-circle" style="width: 8px; height: 8px; background-color: #10B981;"></span>
+            Alquiler de media y larga duracion
+          </div>
+
+          <h1 class="display-3 fw-bold tracking-tight text-white mb-3" style="line-height: 1.15;">
+            Tu proximo hogar, <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">sin fecha de salida.</span>
+          </h1>
+
+          <p class="lead text-slate-200 text-balance mb-4 max-w-3xl" style="font-weight: 400; font-size: 1.2rem;">
+            Dile adios a la incertidumbre del alquiler turistico. En Nestlong conectamos inquilinos solventes con viviendas equipadas para estancias de 1 a 5 anos, con fianza legal custodiada y contratos regulados.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3 pt-2">
+            <a href="#catalogo" class="btn btn-primary btn-lg rounded-pill px-4 py-3 fw-semibold text-white shadow-lg border-0" style="background-color: #0369A1;">
+              Explorar Propiedades
+            </a>
+            <a href="#aplicar" class="btn btn-outline-light btn-lg rounded-pill px-4 py-3 fw-semibold bg-white/10 backdrop-blur-sm">
+              Postular como Inquilino
+            </a>
+          </div>
+
+          <div class="row g-3 pt-5 mt-2 border-top border-white/20 text-slate-300">
+            <div class="col-4">
+              <strong class="d-block h4 text-white fw-bold mb-0">12+ meses</strong>
+              <small class="text-xs">Contratos estables</small>
+            </div>
+            <div class="col-4">
+              <strong class="d-block h4 text-white fw-bold mb-0">0% Sorpresas</strong>
+              <small class="text-xs">Condiciones claras</small>
+            </div>
+            <div class="col-4">
+              <strong class="d-block h4 text-white fw-bold mb-0">48 hrs</strong>
+              <small class="text-xs">Validacion de perfil</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Controles de navegacion manual del Slideshow -->
+    <button class="hero-control-btn hero-control-prev d-none d-md-flex" id="hero-prev-btn" aria-label="Fotografia anterior">
+      <svg class="svg-icon" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" fill="none" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button class="hero-control-btn hero-control-next d-none d-md-flex" id="hero-next-btn" aria-label="Siguiente fotografia">
+      <svg class="svg-icon" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" fill="none" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Slideshow dots -->
+    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 z-3 d-flex gap-1" id="hero-dots">
+      <button class="hero-dot-btn opacity-100" type="button" aria-label="Fotografia 1"></button>
+      <button class="hero-dot-btn opacity-50" type="button" aria-label="Fotografia 2"></button>
+      <button class="hero-dot-btn opacity-50" type="button" aria-label="Fotografia 3"></button>
+      <button class="hero-dot-btn opacity-50" type="button" aria-label="Fotografia 4"></button>
+    </div>
+  </section>
+
+  <!-- Trust Counters Strip -->
+  <section class="bg-white py-5 border-bottom border-slate-200">
+    <div class="container animate-on-scroll">
+      <div class="row text-center g-4">
+        <div class="col-6 col-md-3">
+          <svg class="svg-icon mx-auto mb-2 text-sky-600" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <div class="h2 fw-bold text-slate-800 mb-0"><span class="counter-value" data-counter-target="850" data-counter-suffix="+" data-target="850">0</span></div>
+          <div class="text-secondary small fw-semibold">Familias instaladas</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <svg class="svg-icon mx-auto mb-2 text-emerald-600" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+          <div class="h2 fw-bold text-slate-800 mb-0"><span class="counter-value" data-counter-target="97" data-counter-suffix="%" data-target="97">0</span></div>
+          <div class="text-secondary small fw-semibold">Satisfaccion verificada</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <svg class="svg-icon mx-auto mb-2 text-sky-600" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div class="h2 fw-bold text-slate-800 mb-0"><span class="counter-value" data-counter-target="48" data-counter-suffix="h" data-target="48">0</span></div>
+          <div class="text-secondary small fw-semibold">Respuesta garantizada</div>
+        </div>
+        <div class="col-6 col-md-3">
+          <svg class="svg-icon mx-auto mb-2 text-slate-600" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div class="h2 fw-bold text-slate-800 mb-0"><span class="counter-value" data-counter-target="6" data-counter-suffix="" data-target="6">0</span></div>
+          <div class="text-secondary small fw-semibold">Ciudades activas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-5 bg-slateBg" id="beneficios">
+    <div class="container py-4">
+      <div class="text-center max-w-2xl mx-auto mb-5 animate-on-scroll">
+        <span class="text-uppercase tracking-wider small fw-bold" style="color: #0369A1;">Por que elegir Nestlong</span>
+        <h2 class="h2 fw-bold text-dark mt-1">Disenado para quienes buscan arraigo</h2>
+      </div>
+
+      <div class="row g-4 text-center">
+        <div class="col-12 col-md-4 animate-on-scroll delay-100">
+          <div class="p-4 rounded-4 bg-white h-100 border border-slate-200 shadow-sm hover-scale">
+            <div class="d-inline-flex p-3 rounded-3 mb-3" style="background-color: #E0F2FE; color: #0369A1;">
+              <svg class="svg-icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <h3 class="h5 fw-bold text-dark mb-2">Fianza Legal Custodiada</h3>
+            <p class="text-secondary small mb-0">Depositamos las garantias en los organismos publicos oficiales. Tu dinero protegido del primer al ultimo dia.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 animate-on-scroll delay-200">
+          <div class="p-4 rounded-4 bg-white h-100 border border-slate-200 shadow-sm hover-scale">
+            <div class="d-inline-flex p-3 rounded-3 mb-3" style="background-color: #D1E7DD; color: #047857;">
+              <svg class="svg-icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2" />
+              </svg>
+            </div>
+            <h3 class="h5 fw-bold text-dark mb-2">Contratos Minimos de 1 Ano</h3>
+            <p class="text-secondary small mb-0">Sin contratos mensuales precarios. Garantia de continuidad para que hagas tuyo el espacio y te instales con calma.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4 animate-on-scroll delay-300">
+          <div class="p-4 rounded-4 bg-white h-100 border border-slate-200 shadow-sm hover-scale">
+            <div class="d-inline-flex p-3 rounded-3 mb-3" style="background-color: #EDE9FE; color: #6D28D9;">
+              <svg class="svg-icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="h5 fw-bold text-dark mb-2">Conectividad y Alta Eficiencia</h3>
+            <p class="text-secondary small mb-0">Propiedades verificadas con fibra de alta velocidad y certificados de eficiencia energetica para optimizar consumos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neighborhoods Showcase -->
+  <section class="py-5 bg-white border-top border-slate-200" id="barrios">
+    <div class="container py-4">
+      <div class="text-center max-w-2xl mx-auto mb-5 animate-on-scroll">
+        <h2 class="h2 fw-bold text-dark">Barrios con Personalidad</h2>
+        <p class="text-secondary">Descubre las zonas mas demandadas para vivir a largo plazo</p>
+      </div>
+
+      <div class="row g-4" id="neighborhoods-grid">
+        <div class="col-12 col-sm-6 col-lg-4 animate-on-scroll">
+          <a href="#catalogo" class="neighborhood-card text-decoration-none text-white h-100 shadow-sm">
+            <div class="neighborhood-bg" style="background-image: url('https://picsum.photos/seed/nestlong-barrio-madrid/600/400');"></div>
+            <div class="neighborhood-overlay"></div>
+            <div class="position-absolute bottom-0 p-4 w-100">
+              <span class="badge bg-white/20 backdrop-blur-sm text-white mb-2">42 propiedades</span>
+              <h3 class="h5 fw-bold mb-1">Salamanca</h3>
+              <p class="small text-slate-200 mb-0">Madrid - Elegancia y comercios boutique.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 animate-on-scroll delay-100">
+          <a href="#catalogo" class="neighborhood-card text-decoration-none text-white h-100 shadow-sm">
+            <div class="neighborhood-bg" style="background-image: url('https://picsum.photos/seed/nestlong-barrio-barcelona/600/400');"></div>
+            <div class="neighborhood-overlay"></div>
+            <div class="position-absolute bottom-0 p-4 w-100">
+              <span class="badge bg-white/20 backdrop-blur-sm text-white mb-2">35 propiedades</span>
+              <h3 class="h5 fw-bold mb-1">Eixample</h3>
+              <p class="small text-slate-200 mb-0">Barcelona - Arquitectura y vida cosmopolita.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 animate-on-scroll delay-200">
+          <a href="#catalogo" class="neighborhood-card text-decoration-none text-white h-100 shadow-sm">
+            <div class="neighborhood-bg" style="background-image: url('https://picsum.photos/seed/nestlong-barrio-valencia/600/400');"></div>
+            <div class="neighborhood-overlay"></div>
+            <div class="position-absolute bottom-0 p-4 w-100">
+              <span class="badge bg-white/20 backdrop-blur-sm text-white mb-2">18 propiedades</span>
+              <h3 class="h5 fw-bold mb-1">Ruzafa</h3>
+              <p class="small text-slate-200 mb-0">Valencia - Cultura, gastronomia y encanto.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 animate-on-scroll">
+          <a href="#catalogo" class="neighborhood-card text-decoration-none text-white h-100 shadow-sm">
+            <div class="neighborhood-bg" style="background-image: url('https://picsum.photos/seed/nestlong-barrio-sevilla/600/400');"></div>
+            <div class="neighborhood-overlay"></div>
+            <div class="position-absolute bottom-0 p-4 w-100">
+              <span class="badge bg-white/20 backdrop-blur-sm text-white mb-2">12 propiedades</span>
+              <h3 class="h5 fw-bold mb-1">Santa Cruz</h3>
+              <p class="small text-slate-200 mb-0">Sevilla - Historia viva en calles peatonales.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 animate-on-scroll delay-100">
+          <a href="#catalogo" class="neighborhood-card text-decoration-none text-white h-100 shadow-sm">
+            <div class="neighborhood-bg" style="background-image: url('https://picsum.photos/seed/nestlong-barrio-malaga/600/400');"></div>
+            <div class="neighborhood-overlay"></div>
+            <div class="position-absolute bottom-0 p-4 w-100">
+              <span class="badge bg-white/20 backdrop-blur-sm text-white mb-2">24 propiedades</span>
+              <h3 class="h5 fw-bold mb-1">Soho</h3>
+              <p class="small text-slate-200 mb-0">Malaga - Arte urbano y ambiente bohemio.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 animate-on-scroll delay-200">
+          <a href="#catalogo" class="neighborhood-card text-decoration-none text-white h-100 shadow-sm">
+            <div class="neighborhood-bg" style="background-image: url('https://picsum.photos/seed/nestlong-barrio-bilbao/600/400');"></div>
+            <div class="neighborhood-overlay"></div>
+            <div class="position-absolute bottom-0 p-4 w-100">
+              <span class="badge bg-white/20 backdrop-blur-sm text-white mb-2">9 propiedades</span>
+              <h3 class="h5 fw-bold mb-1">Abandoibarra</h3>
+              <p class="small text-slate-200 mb-0">Bilbao - Modernidad junto a la ria.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Section -->
+  <section class="py-5 bg-slateBg" id="catalogo">
+    <div class="container py-4">
+      
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4 animate-on-scroll">
+        <div>
+          <span class="text-uppercase tracking-wider small fw-bold" style="color: #0369A1;">Inventario Residencial</span>
+          <h2 class="h2 fw-bold text-dark mb-1">Viviendas de Alquiler Largo Plazo</h2>
+          <p class="text-secondary small mb-0">Descubre espacios listos para habitar con contratos plurianuales transparentes.</p>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+          <button id="toggle-favorites-btn" class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1.5 d-inline-flex align-items-center gap-1.5 shadow-sm bg-white" style="font-size: 0.8rem;" aria-pressed="false" title="Mostrar solo inmuebles guardados">
+            <svg class="svg-icon text-danger" width="15" height="15" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span id="fav-btn-label">Favoritos</span>
+            <span class="badge rounded-pill bg-danger text-white d-none" id="fav-count-badge">0</span>
+          </button>
+          <span class="badge rounded-pill bg-white text-secondary border px-3 py-2 shadow-sm font-monospace">
+            Propiedades: <strong id="properties-count" class="text-primary font-tabular" style="color: #0369A1;">6</strong>
+          </span>
+        </div>
+      </div>
+
+      <div class="bg-white p-3 p-md-4 rounded-4 shadow-sm border border-slate-200 mb-5 animate-on-scroll">
+        <div class="row g-3 align-items-end">
+          
+          <div class="col-12 col-lg-3">
+            <label for="search-input" class="form-label text-xs uppercase tracking-wider text-secondary fw-semibold mb-1 d-flex align-items-center gap-1.5">
+              <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Buscar
+            </label>
+            <input type="text" id="search-input" class="form-control rounded-3 border-slate-300 py-2.5" placeholder="Palabras clave...">
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-2">
+            <label for="filter-city" class="form-label text-xs uppercase tracking-wider text-secondary fw-semibold mb-1 d-flex align-items-center gap-1.5">
+              Ciudad
+            </label>
+            <select id="filter-city" class="form-select rounded-3 border-slate-300 py-2.5">
+              <option value="all">Todas las ciudades</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Valencia">Valencia</option>
+              <option value="Sevilla">Sevilla</option>
+              <option value="Malaga">Málaga</option>
+              <option value="Bilbao">Bilbao</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-3">
+            <label for="filter-price" class="form-label text-xs uppercase tracking-wider text-secondary fw-semibold mb-1 d-flex align-items-center gap-1.5">
+              Precio Mensual
+            </label>
+            <select id="filter-price" class="form-select rounded-3 border-slate-300 py-2.5">
+              <option value="all">Cualquier precio</option>
+              <option value="under1000">Hasta 1.000 €</option>
+              <option value="1000to1500">1.000 € a 1.500 €</option>
+              <option value="above1500">Mas de 1.500 €</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-2">
+            <label for="filter-type" class="form-label text-xs uppercase tracking-wider text-secondary fw-semibold mb-1 d-flex align-items-center gap-1.5">
+              Tipologia
+            </label>
+            <select id="filter-type" class="form-select rounded-3 border-slate-300 py-2.5">
+              <option value="all">Todas</option>
+              <option value="apartamento">Apartamento</option>
+              <option value="atico">Ático</option>
+              <option value="estudio">Estudio</option>
+              <option value="duplex">Dúplex</option>
+            </select>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-2">
+            <label for="sort-select" class="form-label text-xs uppercase tracking-wider text-secondary fw-semibold mb-1 d-flex align-items-center gap-1.5">
+              Ordenar por
+            </label>
+            <select id="sort-select" class="form-select rounded-3 border-slate-300 py-2.5">
+              <option value="default">Recomendados</option>
+              <option value="price-asc">Precio: menor a mayor</option>
+              <option value="price-desc">Precio: mayor a menor</option>
+              <option value="area-desc">Superficie: mayor m²</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Barra de Filtros Activos con Badges interactivos -->
+        <div id="active-filters-bar" class="d-flex flex-wrap align-items-center gap-2 mt-3 pt-3 border-top border-slate-100 d-none">
+          <span class="text-xs text-secondary fw-bold text-uppercase">Filtros activos:</span>
+          <div id="active-pills-list" class="d-flex flex-wrap gap-2"></div>
+          <button id="clear-all-filters-btn" class="btn btn-link btn-sm text-primary text-decoration-none p-0 ms-2 text-xs fw-semibold">Limpiar todos</button>
+        </div>
+      </div>
+
+      <div class="row g-4" id="properties-grid">
+        <!-- Renderizado dinamico via js/app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-5 bg-white border-top border-slate-200" id="testimonios">
+    <div class="container py-4">
+      <div class="text-center max-w-2xl mx-auto mb-5 animate-on-scroll">
+        <h2 class="h2 fw-bold text-dark">Lo que Dicen Nuestros Residentes</h2>
+        <p class="text-secondary">Experiencias reales de quienes encontraron su hogar definitivo</p>
+      </div>
+
+      <div class="row g-4" id="testimonials-grid">
+        <div class="col-12 col-md-6 col-lg-3 animate-on-scroll delay-100">
+          <div class="card h-100 border-0 shadow-sm p-4 rounded-4 bg-slate-50">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <img src="https://picsum.photos/seed/nestlong-avatar1/100/100" class="rounded-circle" width="50" height="50" alt="Retrato de Laura Gomez">
+              <div>
+                <h3 class="h6 mb-0 fw-bold">Laura Gomez</h3>
+                <small class="text-secondary">Profesora, Madrid</small>
+              </div>
+            </div>
+            <div class="mb-2">
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="fst-italic text-slate-700 small mb-0">"Tras anos de mudanzas forzosas por subidas de precio, con Nestlong por fin encontre estabilidad a 3 anos."</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 animate-on-scroll delay-200">
+          <div class="card h-100 border-0 shadow-sm p-4 rounded-4 bg-slate-50">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <img src="https://picsum.photos/seed/nestlong-avatar2/100/100" class="rounded-circle" width="50" height="50" alt="Retrato de Carlos Ruiz">
+              <div>
+                <h3 class="h6 mb-0 fw-bold">Carlos Ruiz</h3>
+                <small class="text-secondary">Ingeniero, Barcelona</small>
+              </div>
+            </div>
+            <div class="mb-2">
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="fst-italic text-slate-700 small mb-0">"El proceso de postulacion fue rapido y sin comisiones ocultas. Totalmente transparente desde el dia uno."</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 animate-on-scroll delay-300">
+          <div class="card h-100 border-0 shadow-sm p-4 rounded-4 bg-slate-50">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <img src="https://picsum.photos/seed/nestlong-avatar3/100/100" class="rounded-circle" width="50" height="50" alt="Retrato de Marta y Luis">
+              <div>
+                <h3 class="h6 mb-0 fw-bold">Marta y Luis</h3>
+                <small class="text-secondary">Familia, Valencia</small>
+              </div>
+            </div>
+            <div class="mb-2">
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-empty" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="fst-italic text-slate-700 small mb-0">"Poder decorar y hacer nuestro el piso sabiendo que tenemos contrato garantizado nos dio mucha paz mental."</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3 animate-on-scroll delay-100">
+          <div class="card h-100 border-0 shadow-sm p-4 rounded-4 bg-slate-50">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <img src="https://picsum.photos/seed/nestlong-avatar4/100/100" class="rounded-circle" width="50" height="50" alt="Retrato de Elena Torres">
+              <div>
+                <h3 class="h6 mb-0 fw-bold">Elena Torres</h3>
+                <small class="text-secondary">Freelance, Malaga</small>
+              </div>
+            </div>
+            <div class="mb-2">
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="svg-icon star-filled" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="fst-italic text-slate-700 small mb-0">"Mi fianza esta depositada oficialmente, algo que no me garantizaban en otras plataformas. Me siento muy segura."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-5 bg-slateBg border-top border-slate-200" id="faq">
+    <div class="container py-4">
+      <div class="text-center max-w-2xl mx-auto mb-5 animate-on-scroll">
+        <h2 class="h2 fw-bold text-dark">Preguntas Frecuentes</h2>
+        <p class="text-secondary">Resolvemos tus dudas sobre el alquiler residencial en Nestlong</p>
+      </div>
+
+      <div class="row justify-content-center animate-on-scroll">
+        <div class="col-12 col-lg-8" id="faq-container">
+          <div class="accordion" id="faqAccordion">
+            
+            <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden">
+              <h3 class="accordion-header" id="headingOne">
+                <button class="accordion-button bg-white text-dark fw-bold rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  ¿Que documentacion necesito para postular?
+                </button>
+              </h3>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-white text-secondary small">
+                  Requerimos tu DNI/NIE, las ultimas 3 nominas y contrato de trabajo para verificar viabilidad. Todo el proceso se hace de forma cifrada y segura.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden">
+              <h3 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed bg-white text-dark fw-bold rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  ¿Cobran comision de agencia al inquilino?
+                </button>
+              </h3>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-white text-secondary small">
+                  No. Con la nueva ley de vivienda, los gastos de gestion inmobiliaria y formalizacion del contrato corren a cargo del propietario.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden">
+              <h3 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed bg-white text-dark fw-bold rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  ¿Cuanto dura el contrato de alquiler?
+                </button>
+              </h3>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-white text-secondary small">
+                  Los contratos son regulados por la Ley de Arrendamientos Urbanos (LAU). Suelen firmarse por 1 ano, prorrogable hasta 5 o 7 anos segun la naturaleza del propietario.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm overflow-hidden">
+              <h3 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed bg-white text-dark fw-bold rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  ¿Donde se deposita mi fianza?
+                </button>
+              </h3>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body bg-white text-secondary small">
+                  Las fianzas son obligatoriamente depositadas en el organismo autonomico correspondiente (ej. IVIMA en Madrid, INCASOL en Cataluna), brindandote total seguridad.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner-bg position-relative py-5">
+    <div class="cta-overlay"></div>
+    <div class="container position-relative z-10 py-5 text-center text-white">
+      <h2 class="display-5 fw-bold mb-3">Tu proximo capitulo comienza aqui</h2>
+      <p class="lead mb-4 text-slate-300 max-w-2xl mx-auto">Únete a cientos de inquilinos que ya disfrutan de un hogar estable y sin sorpresas con Nestlong.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="#catalogo" class="btn btn-light btn-lg rounded-pill px-4 fw-bold text-sky-700">Explorar Propiedades</a>
+        <a href="#aplicar" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold">Postular como Inquilino</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section class="py-5 bg-white border-top border-slate-200" id="aplicar">
+    <div class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          
+          <div class="text-center mb-4">
+            <span class="badge rounded-pill px-3 py-1.5 text-white mb-2" style="background-color: #0369A1; font-weight: 600;">Postulacion Inquilino</span>
+            <h2 class="display-6 fw-bold text-dark mb-2">Aplica para Renta de Largo Plazo</h2>
+            <p class="text-secondary text-balance max-w-xl mx-auto">
+              Envia tu solicitud directamente al propietario. Revisamos la solvencia en menos de 48 horas sin coste para ti.
+            </p>
+          </div>
+
+          <div id="selected-property-banner" class="alert alert-info d-none rounded-3 d-flex align-items-center gap-2 mb-4" role="status">
+            <svg class="svg-icon text-info" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg>
+            <div>Postulando para la propiedad: <strong id="selected-property-title"></strong></div>
+          </div>
+
+          <div id="form-success-alert" class="alert alert-success d-none rounded-4 p-4 shadow-sm mb-4 border-success-subtle text-center" role="alert" tabindex="-1">
+            <div class="mb-2 text-success">
+              <svg class="svg-icon" width="48" height="48" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="h5 fw-bold text-success mb-2">Solicitud Enviada con Exito</h3>
+            <p class="small text-secondary mb-3">Hemos recibido tu postulacion. Un asesor de Nestlong se comunicara contigo para coordinar la visita y verificacion contractual.</p>
+            <a href="#catalogo" class="btn btn-outline-success btn-sm rounded-pill px-3">Explorar mas opciones</a>
+          </div>
+
+          <div class="p-4 p-md-5 rounded-4 shadow-lg border border-slate-200 bg-white">
+            <form id="rental-application-form" class="needs-validation" novalidate>
+              
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-md-6">
+                  <label for="applicant-name" class="form-label fw-semibold text-dark small">
+                    Nombre completo <span class="text-danger" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" class="form-control form-control-lg rounded-3 fs-6 border-slate-300" id="applicant-name" placeholder="Ej. Carlos Mendoza" required minlength="3" aria-describedby="name-feedback">
+                  <div id="name-feedback" class="invalid-feedback small">Por favor, ingresa tu nombre completo (minimo 3 caracteres).</div>
+                  <div class="valid-feedback small">Nombre valido.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="applicant-dni" class="form-label fw-semibold text-dark small">
+                    Documento de Identidad (DNI / NIE) <span class="text-danger" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" class="form-control form-control-lg rounded-3 fs-6 border-slate-300" id="applicant-dni" placeholder="12345678X" required pattern="[0-9A-Za-z]{8,9}" aria-describedby="dni-feedback">
+                  <div id="dni-feedback" class="invalid-feedback small">Introduce un formato de DNI/NIE valido.</div>
+                  <div class="valid-feedback small">Documento verificado.</div>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-md-6">
+                  <label for="applicant-email" class="form-label fw-semibold text-dark small">
+                    Correo electronico <span class="text-danger" aria-hidden="true">*</span>
+                  </label>
+                  <input type="email" class="form-control form-control-lg rounded-3 fs-6 border-slate-300" id="applicant-email" placeholder="carlos@correo.com" required aria-describedby="email-feedback">
+                  <div id="email-feedback" class="invalid-feedback small">Proporciona un correo electronico valido.</div>
+                  <div class="valid-feedback small">Correo correcto.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="applicant-phone" class="form-label fw-semibold text-dark small">
+                    Telefono de contacto <span class="text-danger" aria-hidden="true">*</span>
+                  </label>
+                  <input type="tel" class="form-control form-control-lg rounded-3 fs-6 border-slate-300" id="applicant-phone" placeholder="+34 600 000 000" required pattern="[0-9+ ]{9,15}" aria-describedby="phone-feedback">
+                  <div id="phone-feedback" class="invalid-feedback small">Ingresa un numero telefonico valido.</div>
+                  <div class="valid-feedback small">Telefono verificado.</div>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-md-6">
+                  <label for="form-property-id" class="form-label fw-semibold text-dark small">
+                    Propiedad o Zona de Interes <span class="text-danger" aria-hidden="true">*</span>
+                  </label>
+                  <select class="form-select form-select-lg rounded-3 fs-6 border-slate-300" id="form-property-id" required aria-describedby="prop-feedback">
+                    <option value="">Selecciona una propiedad o zona...</option>
+                    <option value="1">Ref. NL-0001 - Salamanca (Madrid)</option>
+                    <option value="2">Ref. NL-0002 - Eixample (Barcelona)</option>
+                    <option value="3">Ref. NL-0003 - Ruzafa (Valencia)</option>
+                    <option value="4">Ref. NL-0004 - Santa Cruz (Sevilla)</option>
+                    <option value="5">Ref. NL-0005 - Soho (Malaga)</option>
+                    <option value="6">Ref. NL-0006 - Abandoibarra (Bilbao)</option>
+                  </select>
+                  <div id="prop-feedback" class="invalid-feedback small">Selecciona al menos una vivienda.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="rental-duration" class="form-label fw-semibold text-dark small">
+                    Duracion deseada del contrato <span class="text-danger" aria-hidden="true">*</span>
+                  </label>
+                  <select class="form-select form-select-lg rounded-3 fs-6 border-slate-300" id="rental-duration" required aria-describedby="duration-feedback">
+                    <option value="">Elige el periodo...</option>
+                    <option value="12">1 ano (Renovable segun LAU)</option>
+                    <option value="24">2 anos</option>
+                    <option value="36">3 anos o mas (Larga estancia blindada)</option>
+                  </select>
+                  <div id="duration-feedback" class="invalid-feedback small">Selecciona la duracion estimada.</div>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-baseline mb-1">
+                  <label for="applicant-notes" class="form-label fw-semibold text-dark small mb-0">
+                    Comentarios adicionales (Opcional)
+                  </label>
+                  <span id="notes-counter" class="text-secondary text-xs font-tabular">0 / 300</span>
+                </div>
+                <textarea class="form-control rounded-3 fs-6 border-slate-300" id="applicant-notes" rows="3" maxlength="300" placeholder="Ej. Contrato indefinido, trabajo remoto..." aria-describedby="notes-help"></textarea>
+                <div id="notes-help" class="form-text text-secondary text-xs mt-1">Compartir tu estabilidad laboral acelera la aprobacion.</div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" value="" id="legal-consent" required aria-describedby="consent-feedback">
+                <label class="form-check-label small text-secondary" for="legal-consent">
+                  Acepto el tratamiento de mis datos personales para la gestion del arrendamiento conforme a la politica de privacidad y la LAU. <span class="text-danger" aria-hidden="true">*</span>
+                </label>
+                <div id="consent-feedback" class="invalid-feedback small">Debes aceptar las condiciones para continuar.</div>
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" id="submit-application-btn" class="btn btn-primary btn-lg rounded-pill py-3 fw-bold text-white shadow-md hover:bg-sky-700 transition-colors d-flex align-items-center justify-content-center gap-2" style="background-color: #0369A1; border-color: #0369A1;">
+                  <span class="btn-spinner spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                  <span class="btn-text">Enviar Postulacion</span>
+                </button>
+              </div>
+
+              <div class="text-center mt-3 d-flex align-items-center justify-content-center gap-1.5 text-secondary">
+                <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0110 0v4" />
+                </svg>
+                <small style="font-size: 0.78rem;">Tus datos estan cifrados y protegidos.</small>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-5 border-t border-slate-800">
+    <div class="container py-3">
+      
+      <!-- Newsletter Signup -->
+      <div class="row mb-5 pb-5 border-bottom border-slate-800 align-items-center">
+        <div class="col-12 col-md-6 mb-4 mb-md-0">
+          <h3 class="h5 text-white fw-bold mb-2">Suscribete a nuestro boletin</h3>
+          <p class="small mb-0">Recibe las ultimas propiedades disponibles antes que nadie.</p>
+        </div>
+        <div class="col-12 col-md-6">
+          <form id="newsletter-form" class="d-flex gap-2">
+            <label for="newsletter-email" class="visually-hidden">Correo electronico para suscripcion</label>
+            <input type="email" id="newsletter-email" class="form-control rounded-pill bg-slate-800 border-slate-700 text-white" placeholder="Tu correo electronico" required aria-label="Correo electronico para boletin">
+            <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold" style="background-color: #0369A1; border: none;">Suscribir</button>
+          </form>
+          <div id="newsletter-feedback" class="small text-emerald-400 mt-2 d-none" role="status"></div>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-between">
+        <div class="col-12 col-md-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <span class="d-inline-flex align-items-center justify-content-center text-white rounded-3 p-1.5" style="width: 32px; height: 32px; background-color: #0369A1;">
+              <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            </span>
+            <span class="h4 fw-bold text-white mb-0">Nest<span style="color: #0369A1;">long</span></span>
+          </div>
+          <p class="small text-slate-400 leading-relaxed mb-4">
+            Nestlong transforma el acceso a la vivienda estable. Conectamos propietarios responsables con inquilinos solventes.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="https://nestlong.pe" class="text-slate-400 hover:text-white" aria-label="Sitio web oficial de Nestlong">
+              <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </a>
+            <a href="contacto.html" class="text-slate-400 hover:text-white" aria-label="Enviar correo o mensaje a Nestlong">
+              <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+            <a href="tel:+34910002233" class="text-slate-400 hover:text-white" aria-label="Llamar a atencion al cliente de Nestlong">
+              <svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.75" fill="none" stroke="currentColor" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <h3 class="h6 fw-bold text-white uppercase tracking-wider mb-3">Navegacion</h3>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="#catalogo" class="text-slate-400 text-decoration-none hover:text-white transition-colors">Catalogo de Pisos</a></li>
+            <li><a href="#beneficios" class="text-slate-400 text-decoration-none hover:text-white transition-colors">Garantias de Alquiler</a></li>
+            <li><a href="#faq" class="text-slate-400 text-decoration-none hover:text-white transition-colors">Preguntas Frecuentes</a></li>
+            <li><a href="contacto.html" class="text-slate-400 text-decoration-none hover:text-white transition-colors">Formulario de Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <h3 class="h6 fw-bold text-white uppercase tracking-wider mb-3">Practica Universitaria</h3>
+          <p class="small text-slate-400 mb-1"><strong>Asignatura:</strong> Desarrollo de Aplicaciones Web</p>
+          <p class="small text-slate-400 mb-2"><strong>Institucion:</strong> UNCP - Ing. de Sistemas</p>
+          <div class="p-2.5 rounded bg-slate-800 text-xs text-slate-300 border border-slate-700">
+            <strong>Desarrolladores:</strong><br>
+            • José Pablo Osorio Mallqui<br>
+            • Arlette D'Alessandra Suárez Román
+          </div>
+          <div class="small mt-3">2026 Nestlong. Todos los derechos reservados.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top-btn" class="back-to-top" aria-label="Volver arriba">
+    <svg class="svg-icon" width="22" height="22" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Toast Flotante Accesible -->
+  <div id="nestlong-toast" class="nestlong-toast" role="status" aria-live="polite"></div>
+
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+    crossorigin="anonymous"
+  ></script>
+  
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
